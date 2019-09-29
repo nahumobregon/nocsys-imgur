@@ -14,7 +14,11 @@ async function imageTotalViewsCounter(){
         _id : '1',
         viewsTotal: {$sum: '$views'}
     }}])
-    return result[0].viewsTotal
+    let viewsTotal = 0;
+    if(result.length > 0) {
+      viewsTotal += result[0].viewsTotal;
+    }
+    return viewsTotal;
 }
 
 async function likesTotalCounter(){
@@ -22,7 +26,11 @@ async function likesTotalCounter(){
         _id : '1',
         likesTotal: {$sum: '$likes'}
     }}])
-    return result[0].likesTotal
+    let likesTotal = 0;
+    if (result.length > 0) {
+      likesTotal += result[0].likesTotal;
+    }
+    return likesTotal;  
 }
 
 module.exports = async () => {
